@@ -32,20 +32,18 @@ function initChart() {
             return {
                 anio: d.periodo,
                 ccaa: d.comunidades,
-                ccaa_searchable: d.comunidades.replace(/\s/g, '-').replace(/[\(\)\,]/g, '').toLowerCase(),
+                ccaa_searchable: d.comunidades.replace(/\s/g, '-').replace(/[\(\)\,]/g, '').toLowerCase().substr(3,),
                 ex_0: +d.e_0,
                 ex_65: +d.ex_6569,
                 ex_80: +d.ex_8084
             }           
         });
 
-        console.log(data);
-
         innerData = data.slice();
 
         //Filtramos los datos de Andalucía por defecto
         let nacData = innerData.filter(function(item){if(item.ccaa_searchable == 'andalucia'){ return item;}});
-        currentData = nacData.slice().reverse();
+        currentData = nacData.slice();
 
         //Desarrollo del gráfico > Debemos hacer muchas variables genéricas para luego actualizar el gráfico
         let margin = {top: 5, right: 22.5, bottom: 25, left: 24.5};
@@ -62,7 +60,7 @@ function initChart() {
 
         //Eje X
         x_c = d3.scaleLinear()
-            .domain([23,33])
+            .domain([0,25])
             .range([0, width])
             .nice();
 
@@ -83,7 +81,7 @@ function initChart() {
 
         //Eje Y
         y_c = d3.scaleLinear()
-            .domain([0.75,3.5])
+            .domain([0,12])
             .range([height,0])
             .nice();
     
@@ -108,8 +106,8 @@ function initChart() {
 
         //Línea
         line = d3.line()
-            .x(function(d) { return x_c(d.edad_media); })
-            .y(function(d) { return y_c(d.ind_fecundidad); })
+            .x(function(d) { return x_c(d.ex_65); })
+            .y(function(d) { return y_c(d.ex_80); })
             .curve(d3.curveMonotoneX);
 
         path_1 = chart.append("path")
@@ -141,8 +139,8 @@ function initChart() {
                     return '2.5';
                 }
             })
-            .attr("cx", function(d) { return x_c(d.edad_media); })
-            .attr("cy", function(d) { return y_c(d.ind_fecundidad); })
+            .attr("cx", function(d) { return x_c(d.ex_65); })
+            .attr("cy", function(d) { return y_c(d.ex_80); })
             .style("fill", function(d,i) { 
                 if(i == 0) {
                     return '' + circle_color_1 + '';
@@ -169,7 +167,7 @@ function initChart() {
             .style('opacity', '0')
             .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
                 //Texto
-                let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Edad media a la maternidad en el primer hijo:' + numberWithCommas(d.edad_media.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Indicador coyuntural de fecundidad:' + numberWithCommas(d.ind_fecundidad.toFixed(1)) + '</p>';
+                let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
                 tooltip.html(html);
 
@@ -194,12 +192,12 @@ function initChart() {
 function updateChart(ccaa, ccaa2) {
     //Filtrar los datos para quedarse únicamente con los que nos interesan > CCAA
     let ccaaData = innerData.filter(function(item) {
-        if ((item.ccaa_searchable == ccaa || item.ccaa_searchable == ccaa2) && (item.edad_media != 0)) {
+        if ((item.ccaa_searchable == ccaa || item.ccaa_searchable == ccaa2) && (item.ex_65 != 0)) {
             return item;
         }
     });
 
-    currentData = ccaaData.reverse();
+    currentData = ccaaData;
 
     ccaaFirstData = currentData.filter(function(item) {
         if (item.ccaa_searchable == ccaa) {
@@ -255,8 +253,8 @@ function animateChart() {
                 return '2.5';
             }
         })
-        .attr("cx", function(d) { return x_c(d.edad_media); })
-        .attr("cy", function(d) { return y_c(d.ind_fecundidad); })
+        .attr("cx", function(d) { return x_c(d.ex_65); })
+        .attr("cy", function(d) { return y_c(d.ex_80); })
         .style("fill", function(d,i) {
             if(i == 0) {
                 return '' + circle_color_1 + '';
@@ -283,7 +281,7 @@ function animateChart() {
         .style('opacity', '0')
         .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
             //Texto
-            let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Edad media a la maternidad en el primer hijo:' + numberWithCommas(d.edad_media.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Indicador coyuntural de fecundidad:' + numberWithCommas(d.ind_fecundidad.toFixed(1)) + '</p>';
+            let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
             tooltip.html(html);
 
@@ -335,8 +333,8 @@ function animateChart() {
                     return '2.5';
                 }
             })
-            .attr("cx", function(d) { return x_c(d.edad_media); })
-            .attr("cy", function(d) { return y_c(d.ind_fecundidad); })
+            .attr("cx", function(d) { return x_c(d.ex_65); })
+            .attr("cy", function(d) { return y_c(d.ex_80); })
             .style("fill", function(d,i) { 
                 if(i == 0) {
                     return '' + circle_color_1 + '';
@@ -363,7 +361,7 @@ function animateChart() {
             .style('opacity', '0')
             .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
                 //Texto
-                let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Edad media a la maternidad en el primer hijo:' + numberWithCommas(d.edad_media.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Indicador coyuntural de fecundidad:' + numberWithCommas(d.ind_fecundidad.toFixed(1)) + '</p>';
+                let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
                 tooltip.html(html);
 
@@ -418,8 +416,8 @@ function initSecondPath(data) {
                 return '2.5';
             }
         })
-        .attr("cx", function(d) { return x_c(d.edad_media); })
-        .attr("cy", function(d) { return y_c(d.ind_fecundidad); })
+        .attr("cx", function(d) { return x_c(d.ex_65); })
+        .attr("cy", function(d) { return y_c(d.ex_80); })
         .style("fill", function(d,i) { 
             if(i == 0) {
                 return '' + circle_color_1 + '';
@@ -446,7 +444,7 @@ function initSecondPath(data) {
         .style('opacity', '0')
         .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
             //Texto
-            let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Edad media a la maternidad en el primer hijo:' + numberWithCommas(d.edad_media.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Indicador coyuntural de fecundidad:' + numberWithCommas(d.ind_fecundidad.toFixed(1)) + '</p>';
+            let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
             tooltip.html(html);
 
@@ -557,7 +555,7 @@ function displayContainer(elem) {
 
 ///// USO DE SELECTORES //////
 let x, i, j, l, ll, selElmnt, a, b, c;
-let currentSelected = 'nacional', currentSelected_2 = '';
+let currentSelected = 'andalucia', currentSelected_2 = '';
 /* Look for any elements with the class "custom-select": */
 x = document.getElementsByClassName("custom-select");
 l = x.length;
@@ -634,7 +632,7 @@ for (i = 0; i < l; i++) {
   });
 }
 
-document.querySelectorAll('[data-value="nacional"]')[1].style.display = 'none';
+document.querySelectorAll('[data-value="andalucia"]')[1].style.display = 'none';
 
 function closeAllSelect(elmnt) {
   /* A function that will close all select boxes in the document,
