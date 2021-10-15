@@ -25,19 +25,21 @@ function initChart() {
     d3.text(dataSource, function (error, d) {
         if (error) throw error;
 
-        let dsv = d3.dsvFormat(';');
+        let dsv = d3.dsvFormat(',');
         let data = dsv.parse(d);
 
         data = data.map(function(d){
             return {
-                anio: d.anio,
-                ccaa: d.ccaa_2,
-                ccaa_searchable: d.ccaa_2.replace(/\s/g, '-').replace(/[\(\)\,]/g, '').toLowerCase(),
-                ex_0: +d.ex0,
+                anio: d.periodo,
+                ccaa: d.comunidades,
+                ccaa_searchable: d.comunidades.replace(/\s/g, '-').replace(/[\(\)\,]/g, '').toLowerCase(),
+                ex_0: +d.e_0,
                 ex_65: +d.ex_6569,
                 ex_80: +d.ex_8084
             }           
         });
+
+        console.log(data);
 
         innerData = data.slice();
 

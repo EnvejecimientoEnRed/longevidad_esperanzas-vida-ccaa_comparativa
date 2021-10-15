@@ -1,6 +1,6 @@
-## Visualización comparativa entre maternidad y fecundidad
+## Visualización comparativa entre esperanzas de vida
 
-Visualización que compara la edad media a la maternidad en el primer hijo con el indicador coyuntural de fecundidad por comunidades autónomas
+Gráfico de puntos conectados
 
 ## Licencia
 
