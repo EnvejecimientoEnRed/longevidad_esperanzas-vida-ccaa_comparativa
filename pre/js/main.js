@@ -61,10 +61,11 @@ function initChart() {
         //Eje X
         x_c = d3.scaleLinear()
             .domain([10,25])
-            .range([0, width]);
+            .range([0, width])
+            .nice();
 
         x_cAxis = function(g){
-            g.call(d3.axisBottom(x_c).ticks(5).tickFormat(function(d) { return numberWithCommas2(d); }))
+            g.call(d3.axisBottom(x_c).ticks(3).tickFormat(function(d) { return numberWithCommas2(d); }))
             g.call(function(g){
                 g.selectAll('.tick line')
                     .attr('y1', '0%')
@@ -84,7 +85,7 @@ function initChart() {
             .range([height,0]);
     
         y_cAxis = function(svg){
-            svg.call(d3.axisLeft(y_c).ticks(5).tickFormat(function(d) { return numberWithCommas2(d); }))
+            svg.call(d3.axisLeft(y_c).ticks(3).tickFormat(function(d) { return numberWithCommas2(d); }))
             svg.call(function(g){
                 g.selectAll('.tick line')
                     .attr('class', function(d,i) {
@@ -477,7 +478,7 @@ function getIframeParams() {
 ///Si viene desde iframe con altura fija, ejecutamos esta función. Si no, los altos son dinámicos a través de PYMJS
 function setChartHeight(iframe_fijo) {
     if(iframe_fijo) {
-        //El contenedor y el main reciben una altura fija. En este caso, 688 y 656
+        //El contenedor y el main reciben una altura fija. En este caso, 680 y 648
         //La altura del gráfico se ajusta más a lo disponible en el main, quitando títulos, lógica, ejes y pie de gráfico
         document.getElementsByClassName('container')[0].style.height = '680px';
         document.getElementsByClassName('main')[0].style.height = '648px';
