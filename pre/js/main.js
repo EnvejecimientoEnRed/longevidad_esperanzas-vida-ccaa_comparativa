@@ -56,13 +56,12 @@ function initChart() {
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
             .append('g')
-            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");        
 
         //Eje X
         x_c = d3.scaleLinear()
-            .domain([0,25])
-            .range([0, width])
-            .nice();
+            .domain([10,25])
+            .range([0, width]);
 
         x_cAxis = function(g){
             g.call(d3.axisBottom(x_c).ticks(5).tickFormat(function(d) { return numberWithCommas2(d); }))
@@ -81,9 +80,8 @@ function initChart() {
 
         //Eje Y
         y_c = d3.scaleLinear()
-            .domain([0,12])
-            .range([height,0])
-            .nice();
+            .domain([5,11])
+            .range([height,0]);
     
         y_cAxis = function(svg){
             svg.call(d3.axisLeft(y_c).ticks(5).tickFormat(function(d) { return numberWithCommas2(d); }))
@@ -107,7 +105,7 @@ function initChart() {
         //Línea
         line = d3.line()
             .x(function(d) { return x_c(d.ex_65); })
-            .y(function(d) { return y_c(d.ex_80); })
+            .y(function(d) { return !isNaN(d.ex_80) ? y_c(d.ex_80) : null;  })
             .curve(d3.curveMonotoneX);
 
         path_1 = chart.append("path")
@@ -140,7 +138,7 @@ function initChart() {
                 }
             })
             .attr("cx", function(d) { return x_c(d.ex_65); })
-            .attr("cy", function(d) { return y_c(d.ex_80); })
+            .attr("cy", function(d) { return !isNaN(d.ex_80) ? y_c(d.ex_80) : null; })
             .style("fill", function(d,i) { 
                 if(i == 0) {
                     return '' + circle_color_1 + '';
