@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>Comparativa entre esperanza de vida a los 65-69 años y a los 80-84 años</title>
+    <title>Comparativa entre la esperanza de vida a los 65-69 años y a los 80-84 años</title>
     <meta name="mrf-extractable" content="false">
     <meta property='og:image' content=''>
     <meta property="og:title" content="Comparativa edad media a la maternidad e indicador de fecundidad">
@@ -17,8 +17,8 @@
         <div class="main">
             <section class="content b-chart active" id="chartBlock">
                 <div class="b-title">
-                    <h1 class="title">Comparativa entre esperanza de vida a los 65-69 años y a los 80-84 años</h1>
-                    <h2 class="subtitle">Datos entre 1975 y 2019. Nivel autonómico</h2>
+                    <h1 class="title">Comparativa entre la esperanza de vida a los 65-69 años y a los 80-84 años</h1>
+                    <h2 class="subtitle">Gráfico X/2021. Datos entre 1975 y 2019. Nivel autonómico</h2>
                 </div>
                 <div class="chart__logics">
                     <div class="chart__options">
@@ -91,12 +91,12 @@
                 </div>
                 <!-- Especial Eje Y -->
                 <div class="chart--special-axis axis-y">
-                    <span>Esperanza de vida para 80-84 años</span>
+                    <span>Esperanza de vida en el grupo de 80-84 años</span>
                 </div> 
                 <div class="chart__viz" id="chart"></div>
                 <!-- Especial Eje X -->
                 <div class="chart--special-axis axis-x">
-                    <span>Esperanza de vida para 65-69 años</span>
+                    <span>Esperanza de vida en el grupo de 65-69 años</span>
                 </div>
                 <!-- Pie de gráfico -->
                 <div class="chart__footer">
@@ -104,7 +104,6 @@
                         <p class="chart__source--data"><span>Fuente: </span>INE y Departamento de Población, CSIC</p>
                         <p class="chart__source--copyright"><a class="link" href="https://creativecommons.org/licenses/by/4.0/deed.en_US" target="_blank">CC BY 4.0</a></p>
                     </div>                    
-                    <p class="chart__note">* Para la variable 'Ambas nacionalidades' hay datos desde 1975. Para las variables 'Española' o 'Extranjera' sólo hay datos a partir de 2002.</p>
                 </div>
                 <div class="logo">
                     <img src="https://raw.githubusercontent.com/EnvejecimientoEnRed/maternidad_fecundidad_viz-comparativa/main/pre/cchs.png" alt="Logo del Centro de Ciencias Humanas y Sociales" width="100%" height="100%">
@@ -114,9 +113,7 @@
                 <div class="b-title">
                     <h1 class="title">Notas adicionales al gráfico</h1>
                 </div>
-                <p class="text__paragraph">En este gráfico se ha utilizado una fuente de datos: el Instituto Nacional de Estadística (INE). Dentro de los indicadores demográficos básicos se disponen los indicadores de fecundidad. De ahí se han utilizado dos epígrafes a nivel autonómico:</p>
-                <p class="text__paragraph">1) El <a class="link" href="https://www.ine.es/jaxiT3/Tabla.htm?t=1441&L=0" target="_blank">epígrafe 2.2.4</a>, que recoge información sobre el indicador coyuntural de fecundidad por comunidad autónoma, según orden del nacimiento y nacionalidad de la madre</p>
-                <p class="text__paragraph">2) El <a class="link" href="https://www.ine.es/jaxiT3/Tabla.htm?t=1580&L=0" target="_blank">epígrafe 2.2.5</a>, que recoge información sobre la edad media a la maternidad por orden de nacimiento -en este caso, nos quedamos con el primer hijo- por comunidad autónoma y según nacionalidad de la madre</p>
+                <p class="text__paragraph">En este gráfico se ha utilizado una fuente de datos: el Instituto Nacional de Estadística (INE). En concreto, dentro de las <a class="link" href="" target="_blank">tablas de mortalidad</a> a nivel autonómico, donde existen datos actualizados para grupos de edad quinquenales.</p>
                 </section>
             <section class="content b-data">
                 <div class="b-title">
@@ -128,7 +125,7 @@
                 <p class="text__header">Descargar como PNG</p>
                 <p class="text__paragraph">También puede descargar el gráfico como una imagen .png haciendo click <button class="btn_share" id="pngImage">aquí</button></p> 
                 <p class="text__paragraph">El gráfico se descargará con los últimos filtros que haya utilizado.</p>
-                <p class="text__paragraph">Es conveniente advertir que, tras hacer una modificación de filtros, debe esperar unos segundos (entre 10 y 15) para que se renderice correctamente el bloque y pueda descargar la imagen de forma satisfactoria.</p>
+                <p class="text__paragraph">Es conveniente advertir que, tras hacer una modificación de filtros, debe esperar unos segundos (entre 7 y 12) para que se renderice correctamente el bloque y pueda descargar la imagen de forma satisfactoria.</p>
             </section>
             <section class="content b-iframes">
                 <div class="b-title">
@@ -137,7 +134,7 @@
                 <p class="text__header">Embeber iframe con alto dinámico</p>
                 <p class="text__paragraph">A la hora de utilizar la visualización dentro de un iframe y poder visualizarla de forma responsiva, este desarrollo se sirve de la librería <a class="link" href="http://blog.apps.npr.org/pym.js/" target="_blank">Pym.js</a>, que modifica de forma dinámica la altura de los iframes.</p>
                 <p class="text__paragraph">Si su sitio web acepta el uso de librerías de terceros, como es el caso de Pym.js, y desea disponer la opción responsiva de esta visualización, copie el siguiente código:</p>
-                <textarea class="text__iframe" disabled=""><div id="viz_cchs_6_2021"></div><script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script><script>let pymParent = new pym.Parent('viz_cchs_6_2021', 'https://EnvejecimientoEnRed.github.io/maternidad_fecundidad_viz-comparativa/', {});</script></textarea>
+                <textarea class="text__iframe" disabled=""><div id="viz_cchs_X_2021"></div><script type="text/javascript" src="https://pym.nprapps.org/pym.v1.min.js"></script><script>let pymParent = new pym.Parent('viz_cchs_X_2021', 'https://EnvejecimientoEnRed.github.io/maternidad_fecundidad_viz-comparativa/', {});</script></textarea>
                 <p class="text__header">Embeber iframe con alto fijo</p>
                 <p class="text__paragraph">Aunque el siguiente iframe tiene una altura fija -680px-, el gráfico se ve correctamente en todos los dispositivos ya que siempre se ajusta al alto disponible que dejan otros elementos como títulos, selectores, botones o leyenda.</p>             
                 <p class="text__paragraph">Si desea integrar esta visualización en su propia página, puede hacerlo copiando el siguiente código:</p>
