@@ -166,7 +166,7 @@ function initChart() {
             .style('opacity', '0')
             .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
                 //Texto
-                let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
+                let html = '<p class="chart__tooltip--title">' + d.ccaa.substr(3) + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
                 tooltip.html(html);
 
@@ -280,7 +280,7 @@ function animateChart() {
         .style('opacity', '0')
         .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
             //Texto
-            let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
+            let html = '<p class="chart__tooltip--title">' + d.ccaa.substr(3) + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
             tooltip.html(html);
 
@@ -360,7 +360,7 @@ function animateChart() {
             .style('opacity', '0')
             .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
                 //Texto
-                let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
+                let html = '<p class="chart__tooltip--title">' + d.ccaa.substr(3) + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
                 tooltip.html(html);
 
@@ -443,7 +443,7 @@ function initSecondPath(data) {
         .style('opacity', '0')
         .on('mouseenter mousedown mousemove mouseover', function(d, i, e) {                
             //Texto
-            let html = '<p class="chart__tooltip--title">' + d.ccaa + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
+            let html = '<p class="chart__tooltip--title">' + d.ccaa.substr(3) + ' (' + d.anio + ')</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 65-69 años:' + numberWithCommas(d.ex_65.toFixed(1)) + ' años</p>' + '<p class="chart__tooltip--text">Esperanza de vida a los 80-84 años:' + numberWithCommas(d.ex_80.toFixed(1)) + '</p>';
 
             tooltip.html(html);
 
