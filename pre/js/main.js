@@ -9,7 +9,7 @@ import * as d3 from 'd3';
 import '../css/main.scss';
 
 ///// VISUALIZACIÓN DEL GRÁFICO //////
-let dataSource = 'https://raw.githubusercontent.com/CarlosMunozDiazCSIC/esperanzas-vida/main/data/ex.csv';
+let dataSource = 'https://raw.githubusercontent.com/EnvejecimientoEnRed/longevidad_esperanzas-vida-ccaa_comparativa/main/data/ex.csv';
 let tooltip = d3.select('#tooltip');
 
 //Variables para visualización
@@ -184,7 +184,7 @@ function initChart() {
 
         setTimeout(() => {
             setChartCanvas(); 
-        }, 4000);
+        }, 6000);
     });
 }
 
@@ -378,7 +378,7 @@ function animateChart() {
     }
     setTimeout(() => {
         setChartCanvas(); 
-    }, 4000);
+    }, 6000);
 }
 
 document.getElementById('replay').addEventListener('click', function() {
